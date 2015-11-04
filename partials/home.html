@@ -1,0 +1,48 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <form class='form-group col-lg-8'>
+      <label class='control-label'for="inputDefault"></label>
+      <input id="search" ng-model="query" type="text" placeholder="search by name, description, or category">
+    </form>
+    <form class="form-group">
+      <label for="select" class="control-label"></label>
+      <div class="col-lg-2">
+        <select class="form-control" id="select"ng-model="category">
+          <option ng-click="category = cold">Cold</option>
+          <option ng-click="category = dark">Dark</option>
+          <option ng-click="category = awesome">Awesome</option>
+          <option ng-click="category = summer">Summer</option>
+          <option ng-click="category = dry">Dry</option>
+          <option ng-click="category = warm">Warm</option>
+          <option ng-click="category = lucid">Lucid</option>
+          <option ng-click="category = hot">Hot</option>
+          <option ng-click="category = winter">Winter</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-lg-10' id="teas" ng-repeat="tea in teas | filter: query | filter: category">
+      <div class='col-lg-5'>
+        <p>Name: {{ tea.name }}</p>
+        <p>Ingredients: {{ tea.ingredients }}</p>
+        <p>Caffeine: {{ tea.caffeineScale }}</p>
+        <p>Price: {{ tea.price }}</p>
+        <p>In stock? {{ tea.inStock }}</p>
+      </div>
+      <div class="col-lg-1"ng-repeat="category in tea.categories">
+        <p>{{ category }}</p>
+      </div>
+      <div class="col-lg-2 col-lg-offset-8">
+        <p><img ng-src="{{ tea.imageUrl }}" /></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
