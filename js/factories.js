@@ -13,15 +13,17 @@ app.factory('TeaList', ["$http", function($http) {
   }
 
   TeaList.addTea = function(id, num) {
-    var quantity = num;
+    var quantity =  isNaN(num) ? 1 : num;
     TeaList.teaArr.forEach(function(tea) {
       if (tea._id === id) {
         if(!tea.quantity) {
         tea.quantity = quantity;
         tea.subTotal = quantity * (tea.price/100);
+        console.log(tea.subTotal);
         } else {
           tea.quantity += quantity;
           tea.subTotal = tea.quantity * (tea.price/100);
+          console.log(tea.subTotal);
         }
       }
     });
@@ -29,8 +31,11 @@ app.factory('TeaList', ["$http", function($http) {
   TeaList.checkOut = function() {
     var finalTotal = 0;
     TeaList.teaArr.forEach(function(tea) {
+      if(tea.subTotal) {
       finalTotal += tea.subTotal;
+      console.log(tea.subTotal);
       console.log(finalTotal);
+      }
     })
     return finalTotal;
   }
