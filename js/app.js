@@ -8,7 +8,7 @@ app.config(['$routeProvider', function($routeProvider) {
   })
   .when('/checkout', {
     templateUrl: 'partials/checkout.html',
-    controller: 'mainController'
+    controller: 'checkoutController'
   });
 }])
 
