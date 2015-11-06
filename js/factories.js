@@ -5,7 +5,6 @@ app.factory('TeaList', ["$http", function($http) {
   TeaList.getData = function() {
     $http.get('teas.json').then(function(res) {
       var teas = res.data;
-      console.log(teas);
       teas.forEach(function(tea) {
       TeaList.teaArr.push(tea);
       })
@@ -19,12 +18,28 @@ app.factory('TeaList', ["$http", function($http) {
         if(!tea.quantity) {
         tea.quantity = quantity;
         tea.subTotal = quantity * (tea.price/100);
-        console.log(tea.subTotal);
         } else {
           tea.quantity += quantity;
           tea.subTotal = tea.quantity * (tea.price/100);
-          console.log(tea.subTotal);
         }
+      }
+    });
+  }
+  TeaList.editTea = function(id, quantity) {
+    TeaList.teaArr.forEach(function(tea) {
+      if(tea._id === id) {
+        tea.quantity = quantity;
+        tea.subTotal = quantity * (tea.price / 100);
+      }
+      TeaList.checkout();
+    });
+  };
+
+  TeaList.deleteTea = function(id) {
+    TeaList.teaArr.forEach(function(tea){
+      if(tea._id === id) {
+        tea.quantity = 0;
+        tea.subTotal = 0;
       }
     });
   }
@@ -33,8 +48,6 @@ app.factory('TeaList', ["$http", function($http) {
     TeaList.teaArr.forEach(function(tea) {
       if(tea.subTotal) {
       finalTotal += tea.subTotal;
-      console.log(tea.subTotal);
-      console.log(finalTotal);
       }
     })
     return finalTotal;
