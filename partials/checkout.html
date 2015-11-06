@@ -3,26 +3,26 @@
     <h1 class='col-lg-3'>My Shopping Bag</h1>
     <h1 class='col-lg-3 col-lg-offset-5'>Order Total: {{ total() | currency }} </h1>
   </div>
-  <div>
+</div>
 
-  <table class="col-lg-12">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Subtotal</th>
-      </tr>
-    </thead>
-    <tbody ng-if="tea.quantity > 0" ng-repeat="tea in teas">
-      <tr>
-        <th>Name: {{ tea.name}} <br>Ingredients: {{ tea.ingredients }}<br><img class = 'col-lg-3 col-lg-offset-7'ng-src="{{ tea.imageUrl }}" /></th>
-        <th>{{ tea.quantity}}</th>
-        <th>{{ tea.subTotal }}</th>
-        <th ng-model="edit"ng-click="edit = !edit"><button class="btn btn-primary">Edit Quantity</button>
-        <button class="btn btn-danger"ng-click="deleteTea(tea._id)">&#10006</button></th>
-        <th><input type="text" ng-click="editTea(tea._id, quantity)"ng-show="edit"></input></th>
-      </tr>
-    </tbody>
-  </table>
+<table class="col-lg-12 table table-striped table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody ng-if="tea.quantity > 0" ng-repeat="tea in teas">
+    <tr>
+      <th class="col-lg-3"><h3>{{ tea.name}}</h2> <br><li>{{ tea.ingredients }}</li></th>
+      <th><img class = 'col-lg-3 col-lg-offset-7'ng-src="{{ tea.imageUrl }}" /></th>
+      <th><input id="edit" type="number"ng-model="tea.quantity"ng-click="editTea(tea._id, tea.quantity)"></th>
+      <th>{{ tea.subTotal | currency }}</th>
+      <th><button class="btn btn-danger"ng-click="deleteTea(tea._id)">&#10006</button></th>
+   </tr>
+  </tbody>
+</table>
 
 

@@ -31,7 +31,6 @@ app.factory('TeaList', ["$http", function($http) {
         tea.quantity = quantity;
         tea.subTotal = quantity * (tea.price / 100);
       }
-      TeaList.checkout();
     });
   };
 

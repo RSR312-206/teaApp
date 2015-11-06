@@ -1,6 +1,6 @@
 #teas {
   margin: 10px;
-  border: solid grey;
+  border: 2px solid grey;
 }
 
 #search {
@@ -10,3 +10,7 @@
 #category {
   padding-right: 20px;
 }
+#edit {
+  width: 50px;
+}
+
