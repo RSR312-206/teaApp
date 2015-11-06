@@ -15,7 +15,7 @@
     </thead>
     <tbody ng-if="tea.quantity > 0" ng-repeat="tea in teas">
       <tr>
-        <th>Name: {{ tea.name}} <br>Ingredients: {{ tea.ingredients }}<br><img ng-src="{{ tea.imageUrl }}" /></th>
+        <th>Name: {{ tea.name}} <br>Ingredients: {{ tea.ingredients }}<br><img class = 'col-lg-3 col-lg-offset-7'ng-src="{{ tea.imageUrl }}" /></th>
         <th>{{ tea.quantity}}</th>
         <th>{{ tea.subTotal }}</th>
         <th ng-model="edit"ng-click="edit = !edit"><button class="btn btn-primary">Edit Quantity</button>
