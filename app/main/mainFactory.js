@@ -60,6 +60,6 @@
     TeaList.getData();
     return TeaList;
   }
-})()
+})();
 
 
