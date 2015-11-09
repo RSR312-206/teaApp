@@ -1,11 +1,12 @@
 (function() {
   'use strict';
 
-  angular.module('teaApp', [
+  angular.module('app', [
     'ngRoute',
     'app.main',
     'app.checkout',
-    'app.layout'
+    'app.layout',
+    'app.core'
     ])
     .config(configModule)
 

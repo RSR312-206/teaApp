@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('app.main')
-    .factory('TeaList', MainFactory);
+    .module('app.core')
+    .factory('TeaList', TeaListFactory);
 
-  MainFactory.$inject = ['$http'];
+  TeaListFactory.$inject = ['$http'];
 
-  function MainFactory($http) {
+  function TeaListFactory($http) {
     var TeaList = {};
     TeaList.teaArr = [];
     $http.get('http://localhost:3001/teas').then(function(res) {

@@ -8,14 +8,16 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.js"></script>
 </head>
 
-<body ng-app="teaApp">
+<body ng-app="app">
 
   <gs-navbar navbar-data='navbar'></gs-navbar>
 
   <div ng-view></div>
 
-  <!-- app -->
-    <script src='public.module.js'></script>
+  <!-- app and core  -->
+    <script src='app.module.js'></script>
+    <script src='app/core/core.module.js'></script>
+    <script src='app/core/teaListFactory.js'></script>
 
   <!-- layout -->
     <script src="app/layout/layout.module.js"></script>
@@ -25,13 +27,11 @@
     <script src='app/main/main.module.js'></script>
     <script src='app/main/config.routes.js'></script>
     <script src='app/main/mainController.js'></script>
-    <script src='app/main/mainFactory.js'></script>
 
   <!-- checkout  -->
     <script src='app/checkout/checkout.module.js'></script>
     <script src='app/checkout/config.routes.js'></script>
     <script src='app/checkout/checkoutController.js'></script>
-    <script src='app/checkout/checkoutFactory.js'></script>
 
   <!-- backend -->
 </body
