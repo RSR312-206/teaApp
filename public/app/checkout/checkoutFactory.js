@@ -2,16 +2,16 @@
   'use strict';
 
   angular
-    .module('app.main')
-    .factory('TeaList', mainFactory);
+    .module('app.checkout')
+    .factory('TeaList', CheckoutFactory);
 
-  mainFactory.$inject = ['$http'];
+  CheckoutFactory.$inject = ['$http'];
 
-  function mainFactory($http) {
+  function CheckoutFactory($http) {
     var TeaList = {};
     TeaList.teaArr = [];
     TeaList.getData = function() {
-      $http.get('teas.json').then(function(res) {
+      $http.get('http://localhost:3001/teas').then(function(res) {
         var teas = res.data;
         teas.forEach(function(tea) {
         TeaList.teaArr.push(tea);
@@ -29,9 +29,17 @@
             tea.quantity += quantity;
             tea.subTotal = tea.quantity * (tea.price/100);
           }
+       $http.put('http://localhost:3001/teas/' + tea._id).success(function(data){
+          console.log(data);
+          console.log('success');
+          })
+          .error(function(data) {
+            console.log('Error: ' + data);
+          });
         }
       });
     }
+
     TeaList.editTea = function(id, quantity) {
       TeaList.teaArr.forEach(function(tea) {
         if(tea._id === id) {

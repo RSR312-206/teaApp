@@ -1,4 +1,23 @@
-[
+var mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost/tea-db");
+
+mongoose.set("debug", true);
+
+module.exports.Tea = require("./tea");
+
+var seeder = require('mongoose-seed');
+
+seeder.connect('mongodb://localhost/tea-db', function() {
+  seeder.loadModel([
+    'models/tea.js'
+  ]);
+
+  seeder.clearModels(['Tea'], function() {
+    seeder.populateModels(teaData);
+  });
+});
+
+var teaData = [
     {
         "_id": "55c8ee82152165d244b98300",
         "name": "Bayard stew",
@@ -120,3 +139,4 @@
         "categories": ["spring", "warm","winter"]
     }
 ]
+

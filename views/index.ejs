@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html ng-app="teaApp">
-
 <head>
   <meta charset 'utf-8'>
   <title>Teas</title>
   <link rel="stylesheet" href='https://bootswatch.com/flatly/bootstrap.min.css'></link>
-  <link rel="stylesheet" href="css/style.css"></link>
+  <link rel="stylesheet" href="app/css/style.css"></link>
   <script type='text/javascript'src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js'></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.js"></script>
 </head>
 
-<body>
+<body ng-app="teaApp">
 
   <gs-navbar navbar-data='navbar'></gs-navbar>
 
   <div ng-view></div>
 
   <!-- app -->
-    <script src='app/app.module.js'></script>
+    <script src='public.module.js'></script>
 
   <!-- layout -->
     <script src="app/layout/layout.module.js"></script>
