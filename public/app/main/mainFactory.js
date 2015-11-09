@@ -29,9 +29,7 @@
             tea.subTotal = tea.quantity * (tea.price/100);
           }
           $http.put('http://localhost:3001/teas/' + id, tea).success(function(data){
-          console.log(data);
           console.log('success');
-          console.log(tea.quantity);
           })
           .error(function(data) {
           console.log('Error: ' + data);
