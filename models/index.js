@@ -1,23 +1,19 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/tea-db");
-
+mongoose.createConnection("mongodb://localhost/tea-db");
 mongoose.set("debug", true);
-
 module.exports.Tea = require("./tea");
 
 var seeder = require('mongoose-seed');
-
 seeder.connect('mongodb://localhost/tea-db', function() {
-  seeder.loadModel([
-    'models/tea.js'
-  ]);
-
+  seeder.loadModels(['./models/tea.js']);
   seeder.clearModels(['Tea'], function() {
     seeder.populateModels(teaData);
   });
 });
-
 var teaData = [
+    {
+        'model': 'Tea',
+        'documents' : [
     {
         "_id": "55c8ee82152165d244b98300",
         "name": "Bayard stew",
@@ -54,7 +50,7 @@ var teaData = [
         "__v": 0,
         "categories": ["cold"]
     },
-     {
+    {
         "_id": "55c8ee82152165d244b98303",
         "name": "Pressor leaf",
         "ingredients": "purina chow, flavorings, pepper, acorns, quality tallow, old sock, bay leaf",
@@ -90,7 +86,7 @@ var teaData = [
         "__v": 0,
         "categories": ["dry","lucid","warm"]
     },
-     {
+    {
         "_id": "55c8ee82152165d244b98306",
         "name": "Cooking mix",
         "ingredients": "flavorings, roasted mushrooms, toast, tumeric",
@@ -138,5 +134,7 @@ var teaData = [
         "__v": 0,
         "categories": ["spring", "warm","winter"]
     }
-]
+  ]}
+];
+
 

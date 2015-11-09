@@ -23,18 +23,19 @@
       TeaList.teaArr.forEach(function(tea) {
         if (tea._id === id) {
           if(!tea.quantity) {
-          tea.quantity = quantity;
-          tea.subTotal = quantity * (tea.price/100);
+            tea.quantity = quantity;
+            tea.subTotal = quantity * (tea.price/100);
           } else {
             tea.quantity += quantity;
             tea.subTotal = tea.quantity * (tea.price/100);
           }
-       $http.put('http://localhost:3001/teas/' + tea._id).success(function(data){
+          $http.put('http://localhost:3001/teas/' + id, tea).success(function(data){
           console.log(data);
           console.log('success');
+          console.log(tea.quantity);
           })
           .error(function(data) {
-            console.log('Error: ' + data);
+          console.log('Error: ' + data);
           });
         }
       });

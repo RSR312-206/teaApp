@@ -23,14 +23,15 @@ app.use(function(req, res, next) {
 
 apiRouter.route('/teas')
 .get(function(req,res){
-  db.Tea.find({},function(error,response){
+  db.Tea.find({},function (error,response){
     console.log(response);
     res.json(response);
   })
 })
 apiRouter.route('/teas/:teaId')
 .get(function(req,res){
-  db.Tea.findById(req.params.teaId,function(error,tea){
+  db.Tea.findById(req.params.teaId,function (error,tea){
+   console.log(tea);
     if (error)
       console.log(error);
       return res.json({message: "there was an error", error: error});
@@ -43,8 +44,16 @@ apiRouter.route('/teas/:teaId')
     tea.quantity = req.body.quantity;
     tea.save(function(err){
       if (err) res.send(err);
-      res.json({message: "tea updated"})
+      res.json({message: "product updated"})
     })
+  })
+})
+
+.delete(function(req,res){
+  db.Tea.remove({_id:req.params.teaId}, function (error,tea){
+    console.log(tea);
+      if (error) return res.send(error);
+      res.json({ message: 'product successfully deleted' });
   })
 })
 
@@ -53,7 +62,6 @@ app.use('/', apiRouter);
 app.get('/', function(req,res){
   res.render('index.ejs');
 });
-
 
 PORT = 3001
 
