@@ -10,14 +10,13 @@
   function MainFactory($http) {
     var TeaList = {};
     TeaList.teaArr = [];
-    TeaList.getData = function() {
-      $http.get('http://localhost:3001/teas').then(function(res) {
-        var teas = res.data;
-        teas.forEach(function(tea) {
-        TeaList.teaArr.push(tea);
-        })
-      });
-    }
+    $http.get('http://localhost:3001/teas').then(function(res) {
+      var teas = res.data;
+      teas.forEach(function(tea) {
+      TeaList.teaArr.push(tea);
+      })
+    });
+
     TeaList.addTea = function(id, num) {
       var quantity =  isNaN(num) ? 1 : num;
       TeaList.teaArr.forEach(function(tea) {
@@ -66,7 +65,6 @@
       })
       return finalTotal;
     }
-    TeaList.getData();
     return TeaList;
   }
 })();
